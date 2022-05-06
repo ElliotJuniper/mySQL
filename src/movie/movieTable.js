@@ -1,5 +1,6 @@
 const { DataTypes } = require("sequelize");
 const { sequelize } = require("../db/connection");
+// const Director = require("../director/directorTable")
 
 const Movie = sequelize.define("Movie", {
     title: {

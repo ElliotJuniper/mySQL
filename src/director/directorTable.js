@@ -14,5 +14,7 @@ const Movie = require("../movie/movieTable");
       }
     });
 
-  Director.hasMany(Movie, {as: "title"})
+  Director.hasMany(Movie, {foreignKey: 'title'});
+  Movie.belongsTo(Director, {foreignKey: "title"})
+
 module.exports = Director;

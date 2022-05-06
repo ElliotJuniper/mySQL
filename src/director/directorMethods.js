@@ -20,7 +20,7 @@ exports.deleteDirector = async (directorObj) => {
     try {
         await Director.destroy({
             where: {
-                title: directorObj.title
+                director: directorObj.director
             }
         });
     } catch (error) {
