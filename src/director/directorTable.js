@@ -1,5 +1,7 @@
 const { DataTypes } = require("sequelize");
 const { sequelize } = require("../db/connection");
+const Movie = require("../movie/movieTable");
+// const Movie = require("./movieTable");
 
     const Director = sequelize.define("Director", {
       director: {
@@ -12,4 +14,5 @@ const { sequelize } = require("../db/connection");
       }
     });
 
+  Director.hasMany(Movie, {as: "title"})
 module.exports = Director;
