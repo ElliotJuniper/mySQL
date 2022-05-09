@@ -9,12 +9,16 @@ const Movie = require("../movie/movieTable");
         allowNull: false,
         unique:true
       },
+      director_id: {
+        type: DataTypes.INTEGER,
+        foreignKey: true
+      },
       country: {
         type: DataTypes.STRING
       }
     });
 
-  Director.hasMany(Movie, {foreignKey: 'title'});
-  Movie.belongsTo(Director, {foreignKey: "title"})
+  // Director.hasMany(Movie, {foreignKey: 'title'});
+  // Movie.belongsTo(Director, {foreignKey: "title"})
 
 module.exports = Director;

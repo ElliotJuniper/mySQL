@@ -5,10 +5,16 @@ const { sequelize } = require("./db/connection");
 //Imports for crud functions
 const { addMovie, listMovie, deleteMovie, updateMovie } = require("./movie/movieMethods");
 const { addDirector, listDirector, deleteDirector, updateDirector } = require("./director/directorMethods");
+const Movie = require("./movie/movieTable");
+const Director = require("./director/directorTable");
 
 const app = async (yargsObj) => {
     try {
         await sequelize.sync();
+        await Movie.sync({alter: true})
+        await Director.sync({alter: true})
+        Director.hasMany(Movie, {foreignKey: 'title'});
+        Movie.belongsTo(Director, {foreignKey: "title"})
         if (yargsObj.add) {
             //add movie to database
             await addMovie({title: yargsObj.title, actor: yargsObj.actor});
